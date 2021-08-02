@@ -1,0 +1,29 @@
+# Docker Compose file to setup the Wiki-Image
+
+# environment variables containing secrets should be written into the '.env' file
+# see the .env-template file for an example setup
+
+version: '2.3'
+services:
+    nginx-wiki:
+        image: peek1e/dokuwiki-docker:latest
+        build: ./setup
+        ports:
+            # to use SSL/Encryption you will need to reverse proxy from a webserver on your host
+            - 80:8080
+        networks:
+            - wiki-network
+        volumes:
+            - wiki-data:/var/www/html
+        restart:
+            unless-stopped
+
+networks:
+  wiki-network:
+   ipam:
+      config:
+      - subnet: 172.16.239.0/24
+        gateway: 172.16.239.1
+
+volumes:
+    wiki-data:
