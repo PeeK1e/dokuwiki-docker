@@ -17,6 +17,9 @@ stages:          # List of stages for jobs, and their order of execution
   - build
   - deploy
 
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"y
+
 services:
   - docker:dind
 
