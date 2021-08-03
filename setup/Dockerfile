@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM alpine:3.10
 LABEL Maintainer="Daniel Lehmann <38333220+PeeK1e@users.noreply.github.com>"
 LABEL Description="Dokuwiki containerized"
 # Install packages and remove default server definition
