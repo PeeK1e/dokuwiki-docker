@@ -20,6 +20,8 @@ stages:          # List of stages for jobs, and their order of execution
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
+   - echo host gw $host-gateway
+   - ip address
    - docker build -t $CI_REGISTRY/peek1e/dokuwiki-docker ./setup
 
 deploy-job:      # This job runs in the deploy stage.
