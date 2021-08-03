@@ -24,10 +24,10 @@ services:
   - docker:dind
 
 before_script:
-  - docker login $CI_REGISTRY -u $CIUSER -p $CITOKEN
+  - docker login -u $CIUSER -p $CITOKEN
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: deploy
   script:
-   - docker build -t $CI_REGISTRY/peek1e/dokuwiki-docker:latest ./setup
-   - docker push $CI_REGISTRY/peek1e/dokuwiki-docker:latest
+   - docker build -t peek1e/dokuwiki-docker:latest ./setup
+   - docker push peek1e/dokuwiki-docker:latest
