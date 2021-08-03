@@ -17,7 +17,7 @@ stages:          # List of stages for jobs, and their order of execution
   - build
   - deploy
 
-#disabling docker
+#disabling docker-tls
 variables:
   DOCKER_TLS_CERTDIR: ""
 
