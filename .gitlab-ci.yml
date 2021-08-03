@@ -18,7 +18,7 @@ stages:          # List of stages for jobs, and their order of execution
 
 #disabling docker-tls
 variables:
-  DOCKER_TLS_CERTDIR: "/cert"
+  DOCKER_TLS_CERTDIR: ""
 
 services:
   - docker:dind
