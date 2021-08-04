@@ -29,13 +29,13 @@ build-job:
   stage: build
   script:
    - docker build -t $IMAGE_NAME ./setup
-  tags: devel
 
 deploy-job:
   stage: deploy
+  before_script: 
     - docker login -u $CIUSER -p $CITOKEN
+  script:
     - docker build -t  $IMAGE_NAME ./setup
-    - docker push 
+    - docker push $IMAGE_NAME
   only:
-    - master
-  tags: release
+    - release
