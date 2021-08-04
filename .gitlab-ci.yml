@@ -29,6 +29,7 @@ build-job:
   stage: build
   script:
    - docker build -t $IMAGE_NAME ./setup
+  tags: devel
 
 deploy-job:
   stage: deploy
@@ -37,3 +38,4 @@ deploy-job:
     - docker push 
   only:
     - master
+  tags: release
