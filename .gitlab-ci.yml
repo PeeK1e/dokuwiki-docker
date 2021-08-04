@@ -33,7 +33,7 @@ build-job:
 deploy-job:
   stage: deploy
   before_script: 
-    - docker login -u $CIUSER -p $CITOKEN
+    - echo $CITOKEN | docker login -u $CIUSER --password-stdin
   script:
     - docker build -t  $IMAGE_NAME ./setup
     - docker push $IMAGE_NAME
