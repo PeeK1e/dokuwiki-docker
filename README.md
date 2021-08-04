@@ -1,3 +1,6 @@
+Build: [![pipeline status](https://git.peek1e.eu/peek1e/dokuwiki-docker/badges/master/pipeline.svg)](https://git.peek1e.eu/peek1e/dokuwiki-docker/-/commits/master) 
+Release: [![pipeline status](https://git.peek1e.eu/peek1e/dokuwiki-docker/badges/release/pipeline.svg)](https://git.peek1e.eu/peek1e/dokuwiki-docker/-/commits/release) 
+
 ### DokuWiki Containerized
 
 This is an containerized version of [DokuWiki](https://www.dokuwiki.org/dokuwiki) on top of [TrafeX/docker-php-nginx](https://github.com/TrafeX/docker-php-nginx)
