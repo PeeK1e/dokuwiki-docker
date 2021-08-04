@@ -14,20 +14,26 @@
 # For more information, see: https://docs.gitlab.com/ee/ci/yaml/README.html#stages
 
 stages:          # List of stages for jobs, and their order of execution
+  - build
   - deploy
 
-#disabling docker-tls
+#disabling docker-tls, bug?
 variables:
   DOCKER_TLS_CERTDIR: ""
+  IMAGE_NAME: peek1e/dokuwiki-docker:latest
 
 services:
   - docker:dind
 
-before_script:
-  - docker login -u $CIUSER -p $CITOKEN
-
-build-job:       # This job runs in the build stage, which runs first.
-  stage: deploy
+build-job:
+  stage: build
   script:
-   - docker build -t peek1e/dokuwiki-docker:latest ./setup
-   - docker push peek1e/dokuwiki-docker:latest
+   - docker build -t $IMAGE_NAME ./setup
+
+deploy-job:
+  stage: deploy
+    - docker login -u $CIUSER -p $CITOKEN
+    - docker build -t  $IMAGE_NAME ./setup
+    - docker push 
+  only:
+    - master
