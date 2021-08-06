@@ -5,10 +5,8 @@ stages:          # List of stages for jobs, and their order of execution
 #disabling docker-tls, bug?
 variables:
   DOCKER_TLS_CERTDIR: ""
-  TAG: latest
-  NAME: peek1e/dokuwiki-docker
   REGISTRY: registry.git.peek1e.eu:5050
-  IMAGE_NAME_FULL: $REGISTRY$NAME:$TAG
+  IMAGE_NAME_FULL: registry.git.peek1e.eu:5050/peek1e/dokuwiki-docker:latest
 
 services:
   - docker:dind
