@@ -1,4 +1,4 @@
-Build: [![pipeline status](https://git.peek1e.eu/peek1e/dokuwiki-docker/badges/master/pipeline.svg)](https://git.peek1e.eu/peek1e/dokuwiki-docker/-/commits/master) 
+Build: [![pipeline status](https://git.peek1e.eu/peek1e/dokuwiki-docker/badges/main/pipeline.svg)](https://git.peek1e.eu/peek1e/dokuwiki-docker/-/commits/main) 
 Release: [![pipeline status](https://git.peek1e.eu/peek1e/dokuwiki-docker/badges/release/pipeline.svg)](https://git.peek1e.eu/peek1e/dokuwiki-docker/-/commits/release) 
 
 ### DokuWiki Containerized
