@@ -5,25 +5,28 @@ stages:          # List of stages for jobs, and their order of execution
 #disabling docker-tls, bug?
 variables:
   DOCKER_TLS_CERTDIR: ""
-  IMAGE_NAME: peek1e/dokuwiki-docker
+  TAG: latest
+  NAME: peek1e/dokuwiki-docker
+  REGISTRY: registry.git.peek1e.eu:5050
+  IMAGE_NAME_FULL: $REGISTRY$NAME:$TAG
 
 services:
   - docker:dind
 
 before_script:
-  - docker pull "$IMAGE_NAME:latest"
+  - docker pull "$IMAGE_NAME_FULL"
 
 build-job:
   stage: build
   script:
-   - docker build --cache-from "$IMAGE_NAME:latest" -t "$IMAGE_NAME:latest" ./setup
+   - docker build --cache-from "$IMAGE_NAME_FULL" -t "$IMAGE_NAME_FULL" ./setup
 
 deploy-job:
   stage: deploy
   before_script: 
-    - echo $CITOKEN | docker login -u $CIUSER --password-stdin
+    - echo $CITOKEN | docker login $REGISTRY -u $CIUSER --password-stdin
   script:
-    - docker build --cache-from "$IMAGE_NAME:latest" -t "$IMAGE_NAME:latest" ./setup
-    - docker push $IMAGE_NAME
+    - docker build --cache-from "$IMAGE_NAME_FULL" -t "$IMAGE_NAME_FULL" ./setup
+    - docker push $IMAGE_NAME_FULL
   only:
     - release
